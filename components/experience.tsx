@@ -2,7 +2,8 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
-import { Award, Calendar } from "lucide-react"
+import { Calendar } from "lucide-react"
+import Image from "next/image"
 
 export default function Experience() {
   const ref = useRef(null)
@@ -15,6 +16,8 @@ export default function Experience() {
       year: "2024",
       description:
         "Oracle University Certified expertise in building, deploying, and optimizing generative AI models on OCI, leveraging cloud-native ML tools for scalable AI solutions.",
+      logo: "/images/oci-badge.jpeg",
+      logoAlt: "Oracle Cloud Infrastructure Certification Badge",
     },
     {
       title: "Applied Machine Learning in Python",
@@ -22,6 +25,8 @@ export default function Experience() {
       year: "2024",
       description:
         "Focused on differentiating supervised (classification) and unsupervised (clustering) techniques to apply the right approach for various datasets.",
+      logo: "/images/python-logo.png",
+      logoAlt: "Python Programming Language Logo",
     },
   ]
 
@@ -56,8 +61,14 @@ export default function Experience() {
                 whileHover={{ y: -5, scale: 1.02 }}
               >
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="p-3 bg-gradient-to-r from-emerald-100 to-teal-100 rounded-lg">
-                    <Award className="w-6 h-6 text-emerald-600" />
+                  <div className="flex-shrink-0 p-2 bg-white rounded-lg shadow-md border border-gray-100">
+                    <Image
+                      src={cert.logo || "/placeholder.svg"}
+                      alt={cert.logoAlt}
+                      width={56}
+                      height={56}
+                      className="w-14 h-14 object-contain"
+                    />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-semibold text-gray-800 mb-2">{cert.title}</h3>
