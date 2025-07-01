@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
-import { ExternalLink, Github } from "lucide-react"
+import { ExternalLink, Github, Calendar } from "lucide-react"
 
 export default function Projects() {
   const ref = useRef(null)
@@ -10,26 +10,68 @@ export default function Projects() {
 
   const projects = [
     {
-      title: "Object Detection with YOLO",
+      title: "FinanceAI",
       description:
-        "Working with YOLO (v4) by Ultralytics, and watching its optimization on mobile-based systems alongside PCs. Using Roboflow to understand how it works under the hood.",
-      technologies: ["Python", "YOLO v4", "Computer Vision", "Roboflow", "Mobile Optimization"],
+        "AI-powered spend-tracking solution for daily use with intelligent categorization and financial insights.",
+      technologies: ["Python", "Machine Learning", "Data Analysis", "AI/ML"],
       category: "AI/ML",
-      gradient: "from-purple-500 to-pink-500",
+      gradient: "from-trust-500 to-innovation-500",
+      github: "https://github.com/rishabharora-kk/FinanceAI",
+      period: "Jan. 2024 — Jun. 2024",
     },
     {
-      title: "URL Shortener",
-      description:
-        "Developed a web-based URL shortener with interactive animations and API integration like bit.ly to ease the process.",
-      technologies: ["JavaScript", "React", "API Integration", "Web Animations", "REST API"],
+      title: "AI-Document-Management",
+      description: "AI-driven document management system using NLP for intelligent organization and retrieval.",
+      technologies: ["Python", "NLP", "Document Processing", "AI"],
+      category: "AI/ML",
+      gradient: "from-success-500 to-trust-500",
+      github: "https://github.com/rishabharora-kk/AI-Document-Management",
+      period: "Jul. 2023 — Dec. 2023",
+    },
+    {
+      title: "Portfolio Website",
+      description: "Personal portfolio site with interactive project showcase and modern responsive design.",
+      technologies: ["JavaScript", "HTML/CSS", "React", "Web Design"],
       category: "Web Development",
-      gradient: "from-emerald-500 to-teal-500",
+      gradient: "from-innovation-500 to-energy-500",
+      github: "https://github.com/rishabharora-kk/Portfolio-Website",
+      period: "Mar. 2023 — Aug. 2023",
+    },
+    {
+      title: "AI-Collaboration",
+      description: "Note-making system with AI features and authentication for collaborative document creation.",
+      technologies: ["Python", "LLM", "Authentication", "Collaboration"],
+      category: "AI/ML",
+      gradient: "from-energy-500 to-success-500",
+      github: "https://github.com/rishabharora-kk/AI-Collaboration",
+      period: "Jan. 2023 — Jun. 2023",
+    },
+    {
+      title: "Modified Auto GPT",
+      description: "LLM agent collaborating with another LLM for automated markdown generation and content creation.",
+      technologies: ["Python", "LLM", "GPT", "Automation"],
+      category: "AI/ML",
+      gradient: "from-trust-600 to-professional-600",
+      github: "https://github.com/rishabharora-kk/Modified-Auto-GPT",
+      period: "Nov. 2022 — Apr. 2023",
+    },
+    {
+      title: "Object Detection with YOLO",
+      description: "Object detection system using YOLOv4 and Roboflow for real-time computer vision applications.",
+      technologies: ["Python", "YOLOv4", "Computer Vision", "Roboflow"],
+      category: "AI/ML",
+      gradient: "from-success-600 to-innovation-600",
+      github: "https://github.com/rishabharora-kk/Object-Detection-YOLO",
+      period: "Mar. 2022 — Mar. 2023",
     },
   ]
 
   return (
-    <section id="projects" className="py-20 px-6">
-      <div className="container mx-auto max-w-6xl">
+    <section
+      id="projects"
+      className="py-20 px-6 bg-gradient-to-br from-white via-trust-50 to-innovation-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+    >
+      <div className="container mx-auto max-w-7xl">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -42,19 +84,19 @@ export default function Projects() {
             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-trust-600 via-innovation-600 to-success-600 bg-clip-text text-transparent">
               Featured Projects
             </span>
           </motion.h2>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-                transition={{ duration: 0.8, delay: 0.4 + index * 0.2 }}
-                className="group relative bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200 hover:border-emerald-300 transition-all duration-300 overflow-hidden"
+                transition={{ duration: 0.8, delay: 0.4 + index * 0.1 }}
+                className="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-professional-200 dark:border-professional-700 hover:border-trust-300 dark:hover:border-trust-600 transition-all duration-300 overflow-hidden shadow-lg hover:shadow-brand-lg"
                 whileHover={{ y: -10, scale: 1.02 }}
               >
                 {/* Background gradient on hover */}
@@ -64,33 +106,38 @@ export default function Projects() {
 
                 <div className="relative z-10">
                   <div className="flex items-start justify-between mb-4">
-                    <div>
+                    <div className="flex-1">
                       <span
-                        className={`inline-block px-3 py-1 bg-gradient-to-r ${project.gradient} text-white rounded-full text-xs font-medium mb-3`}
+                        className={`inline-block px-3 py-1 bg-gradient-to-r ${project.gradient} text-white rounded-full text-xs font-medium mb-3 shadow-lg`}
                       >
                         {project.category}
                       </span>
-                      <h3 className="text-xl font-semibold text-gray-800 mb-3">{project.title}</h3>
+                      <h3 className="text-xl font-semibold text-professional-800 dark:text-professional-200 mb-2 group-hover:text-trust-600 dark:group-hover:text-trust-400 transition-colors">
+                        {project.title}
+                      </h3>
+                      <div className="flex items-center gap-1 text-xs text-professional-500 dark:text-professional-400 mb-3">
+                        <Calendar className="w-3 h-3" />
+                        <span>{project.period}</span>
+                      </div>
                     </div>
                     <div className="flex gap-2">
-                      <motion.button
-                        className="p-2 bg-gray-100 hover:bg-emerald-100 rounded-lg transition-colors duration-200"
+                      <motion.a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 bg-professional-100 dark:bg-professional-700 hover:bg-trust-100 dark:hover:bg-trust-900/30 rounded-lg transition-colors duration-200 shadow-lg"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
+                        aria-label={`View ${project.title} on GitHub`}
                       >
-                        <Github className="w-4 h-4 text-gray-600 hover:text-emerald-600" />
-                      </motion.button>
-                      <motion.button
-                        className="p-2 bg-gray-100 hover:bg-emerald-100 rounded-lg transition-colors duration-200"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <ExternalLink className="w-4 h-4 text-gray-600 hover:text-emerald-600" />
-                      </motion.button>
+                        <Github className="w-4 h-4 text-professional-600 dark:text-professional-400 hover:text-trust-600 dark:hover:text-trust-400" />
+                      </motion.a>
                     </div>
                   </div>
 
-                  <p className="text-gray-600 leading-relaxed mb-6">{project.description}</p>
+                  <p className="text-professional-600 dark:text-professional-300 leading-relaxed mb-6 text-sm">
+                    {project.description}
+                  </p>
 
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech, techIndex) => (
@@ -98,8 +145,8 @@ export default function Projects() {
                         key={techIndex}
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                        transition={{ duration: 0.4, delay: 0.6 + index * 0.2 + techIndex * 0.05 }}
-                        className="px-3 py-1 bg-gradient-to-r from-gray-50 to-gray-100 text-gray-700 rounded-full text-sm font-medium border border-gray-200"
+                        transition={{ duration: 0.4, delay: 0.6 + index * 0.1 + techIndex * 0.03 }}
+                        className="px-3 py-1 bg-gradient-to-r from-professional-50 to-professional-100 dark:from-professional-700 dark:to-professional-600 text-professional-700 dark:text-professional-300 rounded-full text-xs font-medium border border-professional-200 dark:border-professional-600 hover:border-trust-300 dark:hover:border-trust-500 transition-colors"
                         whileHover={{ scale: 1.05 }}
                       >
                         {tech}
@@ -114,19 +161,20 @@ export default function Projects() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-center mt-12"
+            transition={{ duration: 0.8, delay: 1.0 }}
+            className="text-center mt-16"
           >
             <motion.a
               href="https://github.com/rishabharora-kk"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-full font-medium hover:from-emerald-700 hover:to-teal-700 transition-all duration-300"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-trust-600 to-innovation-600 hover:from-trust-700 hover:to-innovation-700 text-white rounded-full font-medium transition-all duration-300 shadow-brand hover:shadow-brand-lg"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
               <Github className="w-5 h-5" />
-              View More Projects
+              View All Projects on GitHub
+              <ExternalLink className="w-4 h-4" />
             </motion.a>
           </motion.div>
         </motion.div>
